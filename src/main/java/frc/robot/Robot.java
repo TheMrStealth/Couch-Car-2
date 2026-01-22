@@ -28,7 +28,15 @@ public class Robot extends TimedRobot {
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
    */
-  public Robot() {}
+  public Robot() {
+    motor1 = new SparkMax(1,MotorType.kBrushless);
+    motor2 = new SparkMax(2,MotorType.kBrushless);
+    motor2.setInverted(true);
+
+    couchDrive = new DifferentialDrive(motor1, motor2);
+
+    wheel = new Joystick(0);
+  }
 
   @Override
   public void robotPeriodic() {}
@@ -40,15 +48,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {}
 
   @Override
-  public void teleopInit() {
-    motor1 = new SparkMax(1,MotorType.kBrushless);
-    motor2 = new SparkMax(2,MotorType.kBrushless);
-    motor2.setInverted(true);
-
-    couchDrive = new DifferentialDrive(motor1, motor2);
-
-    wheel = new Joystick(0);
-  }
+  public void teleopInit() {}
 
   @Override
   public void teleopPeriodic() {
