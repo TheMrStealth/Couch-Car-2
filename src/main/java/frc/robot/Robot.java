@@ -85,6 +85,6 @@ public class Robot extends TimedRobot {
       return wheel.getRawAxis(2);
   }
   public double getBrake() {
-      return wheel.getRawAxis(5);
+      return wheel.getRawAxis(3);
   }
 }
