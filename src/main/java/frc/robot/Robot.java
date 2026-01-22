@@ -53,9 +53,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     steering = getSteering();
-    throttle = (1-getThrottle())/2;
-    brake = (1-getBrake())/2;
-    speed = throttle-brake;
+    throttle = -getThrottle();
+    brake = -getBrake();
+    speed = throttle;
+    speed -= 0.02 * speed + brake;
 
     couchDrive.arcadeDrive(speed, steering);
   }
